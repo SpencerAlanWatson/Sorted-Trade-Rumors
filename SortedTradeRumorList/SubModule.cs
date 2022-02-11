@@ -8,8 +8,8 @@ namespace SortedTradeRumorList
 	{
 		protected override void OnBeforeInitialModuleScreenSetAsRoot()
 		{
-			Harmony testHarmony = new Harmony("SortedTradeRumorList");
-			testHarmony.PatchAll();			
+			Harmony harmony = new Harmony("SortedTradeRumorList");
+			harmony.PatchAll();			
 			base.OnBeforeInitialModuleScreenSetAsRoot();
 		}
 	}
