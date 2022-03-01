@@ -2,8 +2,6 @@
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 
-// ReSharper disable UnusedType.Global
-
 namespace SortedTradeRumorList
 {
 	public class SubModule : MBSubModuleBase

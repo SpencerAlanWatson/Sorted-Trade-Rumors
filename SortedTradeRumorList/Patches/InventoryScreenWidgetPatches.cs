@@ -43,22 +43,21 @@ namespace SortedTradeRumorList.Patches
 		{
 			List<ItemMenuTooltipPropertyVM> allTooltips = new List<ItemMenuTooltipPropertyVM>();
 			List<ItemMenuTooltipPropertyVM> nonPriceTooltips = new List<ItemMenuTooltipPropertyVM>();
-			int lowestBuyPrice = 0;
+			int? lowestBuyPrice = null;
 			string lowestBuyString = "";
 			int highestSellPrice = 0;
 			string highestSellString = "";
 
 			// In testing I found that attempting to modify the original list
 			// Resulted in very spoty updates and a lot of issues
-			// Going around the setter function entirely makde those issues disapper
+			// Going around the setter function entirely made those issues disapper
 			__instance.TargetItemProperties.Do<ItemMenuTooltipPropertyVM>((ItemMenuTooltipPropertyVM item) => {
 			string text = item.ValueLabel;
 				if (text.Contains("buy"))
 				{
 					allTooltips.Add(item);
 					int itemPrice = getPrice(text);
-					// The buy price for an item will never be zero in actual play.
-					if (itemPrice < lowestBuyPrice || lowestBuyPrice == 0)
+					if (lowestBuyPrice != null && itemPrice < lowestBuyPrice)
 					{
 						lowestBuyPrice = itemPrice;
 						lowestBuyString = text;
